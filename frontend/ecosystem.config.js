@@ -6,8 +6,10 @@ const {
 
 module.exports = {
   apps: [{
-    name: 'api-service',
-    script: './dist/app.js',
+    name: 'frontend',
+    script: 'npm',
+    args: 'start',
+    cwd: './',
   }],
 
   deploy: {
@@ -18,10 +20,12 @@ module.exports = {
       repo: 'https://github.com/jsassass1n/praktikum-mesto.git',
       path: DEPLOY_PATH,
       'pre-deploy': `
+        rm -rf * &&
         scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH} &&
         scp .env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}
       `,
-      'post-deploy': 'npm i && npm run build',
+      'post-deploy': 'npm i && npm run build && pm2 reload ecosystem.config.js --only frontend',
+      'clone': true
     },
   },
 };
