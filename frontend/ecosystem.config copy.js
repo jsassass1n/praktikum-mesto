@@ -15,7 +15,7 @@ module.exports = {
       repo: DEPLOY_REPOSITORY,
       path: DEPLOY_PATH,
       'pre-deploy-local': `bash scripts/deployEnv.sh ${DEPLOY_USER}@${DEPLOY_HOST} ${DEPLOY_PATH}`,
-      'post-deploy': 'export PATH=$HOME/.nvm/versions/node/v16.20.2/bin:$PATH && cd backend && pwd && npm ci && npm run build',
+      'post-deploy': 'export PATH=$HOME/.nvm/versions/node/v16.20.2/bin:$PATH && cd frontend && pwd && npm ci && npm run build',
     },
   },
 };
