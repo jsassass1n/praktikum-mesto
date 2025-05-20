@@ -28,4 +28,4 @@ app.use(errors());
 app.use(errorHandler);
 
 // eslint-disable-next-line no-console
-app.listen(Number(PORT), '0.0.0.0', () => console.log('ok'));
+app.listen(Number(PORT), () => console.log('ok'));
